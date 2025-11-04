@@ -1,0 +1,32 @@
+[  
+  {
+    "iconName": "standard:display_text",
+    "ruleType": "regexp",
+    "name": "Extract reversal code",
+    "inputFieldName": "cpm__Raw_XML_entry__c",
+    "regExp": "reasonCode\"\\s*:\\s*\"([^\"]+)",
+    "regExpCapturingGroup": "1",
+    "regExpMultiValue": true,
+    "fieldName": "cpm__Reason_Code__c",
+    "fieldType": "string",
+    "seqNr": "1",
+    "jobNr": "1"
+  },
+  {
+    "iconName": "standard:topic2",
+    "ruleType": "constant",
+    "constant": "true",
+    "name": "Set reversal indicator if there is a reason code",
+    "entryCriteria": [
+      {
+        "fieldName": "cpm__Reason_Code__c",
+        "fieldType": "string",
+        "comparisonOperator": "notEquals"
+      }
+    ],
+    "fieldName": "cpm__Reversal_Indicator__c",
+    "fieldType": "boolean",
+    "seqNr": "2",
+    "jobNr": "1"
+  }
+]
